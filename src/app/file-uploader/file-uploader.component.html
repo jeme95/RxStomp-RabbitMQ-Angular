@@ -1,0 +1,33 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="container">
+  <h2>CPACS Hochladen</h2>
+
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <div>
+      <div class="row">
+        <div class="border col-6">
+          <input
+            formControlName="file"
+            id="file"
+            type="file"
+            class="form-control"
+            [attr.disabled]="loading ? '' : null"
+            (change)="onFileChange($event)"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <button
+            class="btn btn-primary"
+            [disabled]="myForm.invalid || loading"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
